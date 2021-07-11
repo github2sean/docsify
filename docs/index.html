@@ -22,7 +22,7 @@
   <div id="app"></div>
 
   <!-- loading显示的文字 -->
-  <div id="app">Loading...</div>
+  <div id="loading">Loading...</div>
 
 
   <!-- Docsify v4 -->
@@ -47,10 +47,14 @@
 
 
   <script>
+
+    var $gitalk = window.document.getElementById("gitalk-container");
+    console.log($gitalk);
+
     const gitalk = new Gitalk({
       clientID: '99bb986c47043c0df38d',
       clientSecret: '650074ae9e9e551f744deed87b2ab9d53498b188',
-      repo: 'https://github.com/github2sean/docsify.git',
+      repo: 'docsify',
       owner: 'github2sean',
       admin: ['github2sean'],
       // id: '{{ page.url | truncate: 50, '' }}',
