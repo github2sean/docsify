@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link rel="icon" href="_media/DOc.svg" />
   <meta charset="UTF-8">
@@ -7,28 +8,62 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css"> -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css">
+  <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
 </head>
 <style>
-.sidebar img{
-  width: 120px;
-  height: 120px;
-}
+  .sidebar img {
+    width: 120px;
+    height: 120px;
+  }
 </style>
+
 <body>
   <div id="app"></div>
+
+  <!-- loading显示的文字 -->
+  <div id="app">Loading...</div>
+
+
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
   <script>
     window.$docsify = {
       name: 'seanDocs',
-      repo: 'https://github.com/github2sean/docsify.git',
+      // repo: 'https://github.com/github2sean/docsify.git',
       coverpage: true,
       loadSidebar: true,
       // subMaxLevel: 2,
-      logo: '/_media/DOc.svg'
+      logo: '/_media/DOc.svg',
+
+
     }
   </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <!-- Plugins：gitalk -->
+  <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+  <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+  <script>
+    const gitalk = new Gitalk({
+      clientID: '99bb986c47043c0df38d',
+      clientSecret: '650074ae9e9e551f744deed87b2ab9d53498b188',
+      repo: 'https://github.com/github2sean/docsify.git',
+      owner: 'github2sean',
+      admin: ['github2sean'],
+      // id: '{{ page.url | truncate: 50, '' }}',
+      distractionFreeMode: false
+    })
+    // 监听URL中hash的变化，如果发现换了一个MD文件，那么刷新页面，解决整个网站使用一个gitalk评论issues的问题。
+    window.onhashchange = function(event) {
+      if (event.newURL.split('?')[0] !== event.oldURL.split('?')[0]) {
+        location.reload()
+      }
+    }
+    gitalk.render('gitalk-container')
+  </script>
 </body>
+
 </html>

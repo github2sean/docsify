@@ -6,7 +6,8 @@
 * 环境：nodejs
 * 前端框架：vue-cli、vue-router、axios、vuex
 * 后端数据接口：Express、MongoDB
+* 本站地址：https://github2sean.github.io/docsify/#/
 
-[GitHub](https://github.com/github2sean/docsify.git)
+[Pro_GitHub](https://github.com/github2sean/docsify.git)
 [Docsify](https://docsify.js.org/)
 [icons](https://www.iconfont.cn/search/index)
