@@ -18,29 +18,31 @@
     width: 120px;
     height: 120px;
   }
-  .iconfont{
+
+  .iconfont {
     text-align: center;
     display: inline-block;
   }
-  .sidebar-nav{
+
+  .sidebar-nav {
     border-top: 1px solid #eee;
   }
-  .sidebar-nav ul li::before{
+
+  .sidebar-nav ul li::before {
     content: "";
     display: block;
     position: absolute;
-    background:#58c393;
+    background: #58c393;
     border-left: : 1px solid #eee;
     height: 30px;
     width: 1px;
     left: : 2px;
     margin-right: -20px;
     margin-left: -10px;
-
   }
 
-  .sidebar-nav ul li a:hover{
-    text-decoration:none;
+  .sidebar-nav ul li a:hover {
+    text-decoration: none;
     background-color: #eee;
   }
 </style>
@@ -59,7 +61,7 @@
   <!-- DemoBoxVue -->
   <script src="//unpkg.com/vue/dist/vue.js"></script>
   <!-- <script src="https://unpkg.com/docsify-demo-box-vue@{version}/dist/docsify-demo-box-vue.min.js"></script> -->
-
+  <!-- navbar -->
 
   <script>
     var jsResources = '<scr' + 'ipt src="//unpkg.com/vue/dist/vue.js"></scr' + 'ipt>'
@@ -71,6 +73,7 @@
       name: 'seanDocs',
       // repo: 'https://github.com/github2sean/docsify.git',
       coverpage: true,
+      loadNavbar: true,
       loadSidebar: true,
       // subMaxLevel: 2,
       logo: '/_media/DOc.svg',
@@ -93,6 +96,10 @@
       },
       //谷歌统计
       ga: 'UA-278849686-1',
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md',
+        '/.*/_navbar.md': '/_navbar.md'
+      },
       plugins: [
         // DemoBoxVue.create(jsResources, cssResources, bootCode)
         // EditOnGithubPlugin.create('https://github2sean.github.io/docsify'),
@@ -110,6 +117,22 @@
         //   })
         // },
         // DocsifyCodefund.create(15)
+        function(hook, vm) {
+          hook.beforeEach(function(html) {
+            var url =
+              'https://github.com/github2sean/docsify/edit/master/docs/' +
+              vm.route.file;
+            var editHtml = '[编辑Docs](' + url + ')\n';
+            var backBtn = '[返回菜单](README)';
+            return (
+              editHtml +
+              html +
+              '\n----\n' +
+              '当前版本: ' + window.Docsify.version + ' ' +
+              editHtml + backBtn
+            );
+          });
+        }
       ],
       copyCode: {
         buttonText: '复制',
@@ -154,7 +177,7 @@
   <script>
     var $gitalk = window.document.getElementById("gitalk-container");
     //console.log($gitalk);
-
+    console.log(window.Docsify.version)
     const gitalk = new Gitalk({
       clientID: '99bb986c47043c0df38d',
       clientSecret: '650074ae9e9e551f744deed87b2ab9d53498b188',
@@ -171,6 +194,11 @@
       }
     }
     //gitalk.render('gitalk-container')
+
+    //离线模式
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('sw.js')
+    }
   </script>
 </body>
 
