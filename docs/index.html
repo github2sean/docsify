@@ -24,6 +24,8 @@
   <!-- loading显示的文字 -->
   <div id="loading">Loading...</div>
 
+  <div id="gitalk-container">
+  </div>
 
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
@@ -44,12 +46,11 @@
   <!-- Plugins：gitalk -->
   <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
+  <script src="js/md5.min.js"></script>
 
   <script>
-
     var $gitalk = window.document.getElementById("gitalk-container");
-    console.log($gitalk);
+    //console.log($gitalk);
 
     const gitalk = new Gitalk({
       clientID: '99bb986c47043c0df38d',
