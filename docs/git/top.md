@@ -47,6 +47,7 @@ D---E---F---G master
 D---E---F---G master
 ```
 - git merge master
+
 ```
 A---B topic
 /
