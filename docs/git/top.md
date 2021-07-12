@@ -72,7 +72,7 @@ git reset 命令把当前分支指向另一个位置，并且有选择的变动�
 --mixed 默认选项。缓存区同步到你指定的提交，但工作目录不受影响
 --hard 缓存区和工作目录都同步到你指定的提交
 ```
-把这些参数想成定义 git reset 操作的作用域就容易理解多了。拿上图举例来说，如果执行 git reset --soft HEAD~3，那么文件不会被修改，后三次提交被 git add 添加到暂存区，相当于只撤销了 git commit；git reset --mixed HEAD~3 则文件不会被修改，但后三次提交没有添加到暂存区；git reset --hard HEAD~3 则文件会被回退到 b325c 时的状态。
+把这些参数想成定义 git reset 操作的作用域就容易理解多了。拿上图举例来说，如果执行 git reset \--soft HEAD\~3，那么文件不会被修改，后三次提交被 git add 添加到暂存区，相当于只撤销了 git commit；git reset \--mixed HEAD\~3 则文件不会被修改，但后三次提交没有添加到暂存区；git reset \--hard HEAD\~3 则文件会被回退到 b325c 时的状态。
 
 ### Revert
 
