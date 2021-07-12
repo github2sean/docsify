@@ -172,21 +172,95 @@ title可加可不加
 
 ### 十、流程图
 
-有些编辑器不支持用图片代替  
-![用图片代替](https://img1.baidu.com/it/u=902111385,1850752909&fm=26&fmt=auto&gp=0.jpg  "代替品")
+有些编辑器不支持流程图,docsify 支持 mermaid 渲染流程图  
+
+- 流程图
+
+```mermaid
+graph LR
+    A --- B
+    B-->C[fa:fa-ban forbidden]
+    B-->D(fa:fa-spinner)
+    C-->F(圆角节点)
+    B-->J[文本节点]
+    J-->K((圆节点))
+    K-->L>非对称节点]
+    D-->M{菱形节点}
+    ;
+```
 
 ```
-flow
-st=>start: 开始
-op=>operation: My Operation
-cond=>condition: Yes or No?
-e=>end
-st->op->cond
-cond(yes)->e
-cond(no)->op
-&
+graph LR
+    A --- B
+    B-->C[fa:fa-ban forbidden]
+    B-->D(fa:fa-spinner)
+    C-->F(圆角节点)
+    B-->J[文本节点]
+    J-->K((圆节点))
+    K-->L>非对称节点]
+    D-->M{菱形节点}
+    ;
+
+ 参数说明：
+    - TB - top bottom
+    - BT - bottom top
+    - RL - right left
+    - LR - left right
+    - TD - same as TB    
 ```
 
+- 时序图
+
+```mermaid
+sequenceDiagram
+　　　participant Alice
+　　　participant Bob
+　　　Alice->John:Hello John, how are you?
+　　　loop Healthcheck
+　　　　　John->John:Fight against hypochondria
+　　　end
+　　　Note right of John:Rational thoughts <br/>prevail...
+　　　John-->Alice:Great!
+　　　John->Bob: How about you?
+　　　Bob-->John: Jolly good!
+```
+
+```
+sequenceDiagram
+　　　participant Alice
+　　　participant Bob
+　　　Alice->John:Hello John, how are you?
+　　　loop Healthcheck
+　　　　　John->John:Fight against hypochondria
+　　　end
+　　　Note right of John:Rational thoughts <br/>prevail...
+　　　John-->Alice:Great!
+　　　John->Bob: How about you?
+　　　Bob-->John: Jolly good!
+```
+
+- 甘特图
+
+```mermaid
+gantt
+　　　dateFormat　YYYY-MM-DD
+　　　title Adding GANTT diagram functionality to mermaid
+　　　section A section
+　　　Completed task　　:done, des1, 2014-01-06,2014-01-08
+　　　Active task 　　　　:active, des2, 2014-01-09, 3d
+　　　future task 　　　　:　　　  des3, after des2, 5d
+　　　future task2　　　　:　　　  des4, after des3, 5d
+　　　section Critical tasks
+　　　Completed task in the critical line　:crit, done, 2014-01-06,24h
+　　　Implement parser and json　　　　　　:crit, done, after des1, 2d
+　　　Create tests for parser　　　　　　　:crit, active, 3d
+　　　Future task in critical line　　　　　:crit, 5d
+　　　Create tests for renderer　　　　　　:2d
+　　　Add to ,mermaid　　　　　　　　　　　:1d
+
+```
+
+-
 ### 十一、转义
 Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：
 
@@ -252,16 +326,13 @@ Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的�
 ```
  <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑
 ```
-- 公式
-当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：
-
+- 公式  
+当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。
+- focsify 支持 katex.js 重新渲染，页面引入：
 ```
-$$
-\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
-\mathbf{i} & \mathbf{j} & \mathbf{k} \\
-\frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\
-\frac{\partial X}{\partial v} &  \frac{\partial Y}{\partial v} & 0 \\
-\end{vmatrix}
-${$tep1}{\style{visibility:hidden}{(x+1)(x+1)}}
-$$
+<script src="//cdn.bootcss.com/KaTeX/0.10.0/katex.min.js"></script>
+```
+渲染效果：
+```tex
+    E=mc^2
 ```
